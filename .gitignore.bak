@@ -30,12 +30,3 @@
 *.exe
 *.out
 *.app
-
-# codeblocks ide relative
-*.depend
-*.layout
-
-# bin, obj, lib directories
-**/bin
-**/obj
-**/*_lib
