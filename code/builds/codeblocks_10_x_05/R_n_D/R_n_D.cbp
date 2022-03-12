@@ -36,6 +36,7 @@
 		<Unit filename="..\..\..\include\compilerGCC\gedkCompilerGCC.h" />
 		<Unit filename="..\..\..\include\gedkCompiler.h" />
 		<Unit filename="..\..\..\include\gedkCompilerGCCDetection.h" />
+		<Unit filename="..\..\..\include\gedkCompilerMSVCDetection.h" />
 		<Unit filename="..\..\..\include\gedkInegerDefs.h" />
 		<Unit filename="..\..\..\include\gedkMemoryPool.h" />
 		<Unit filename="..\..\..\include\gedkPlatform.h" />

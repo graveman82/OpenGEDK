@@ -60,28 +60,56 @@
 
 #include "gedkPlatform.h"
 
-#ifdef GEDK_GCC
+
 
 namespace gedk
 {
+
+// compiler-defined typedefs
+//---------------------------
+#ifdef GEDK_GCC
 
 // signed integers
 typedef int8_t  int8_t;
 typedef int16_t int16_t;
 typedef int32_t int32_t;
 
-#ifdef GEDK_PLATFORM64
+#   ifdef GEDK_PLATFORM64
 	typedef int64_t int64_t;
-#endif // GEDK_OS_WINDOWS64
+#   endif // GEDK_OS_WINDOWS64
 
 // unsigned integers
 typedef uint8_t  uint8_t;
 typedef uint16_t uint16_t;
 typedef uint32_t uint32_t;
 
-#ifdef GEDK_PLATFORM64
+#   ifdef GEDK_PLATFORM64
 	typedef uint64_t uint64_t;
-#endif // GEDK_OS_WINDOWS64
+#   endif // GEDK_OS_WINDOWS64
+
+#elif defined(GEDK_MSVC)
+
+// signed integers
+typedef __int8  int8_t;
+typedef __int16 int16_t;
+typedef __int32 int32_t;
+
+#   ifdef GEDK_PLATFORM64
+	typedef __int64 int64_t;
+#   endif // GEDK_OS_WINDOWS64
+
+// unsigned integers
+typedef unsigned __int8  uint8_t;
+typedef unsigned __int16 uint16_t;
+typedef unsigned __int32 uint32_t;
+
+#   ifdef GEDK_PLATFORM64
+	typedef unsigned __int64 uint64_t;
+#   endif // GEDK_OS_WINDOWS64
+
+#else
+#   error "Unsupported compiler used."
+#endif // GEDK_GCC
 
 // user-friendly typedefs
 //------------------------
@@ -132,8 +160,5 @@ const UBool32 kFalse32 = 0;
 const UBool32 kTrue32 = 1;
 } // end of gedk
 
-#else
-#   error "Unsupported compiler used."
-#endif // GEDK_GCC
 
 #endif // OPENGEDK_INTEGERDEFS_H_INCLUDED

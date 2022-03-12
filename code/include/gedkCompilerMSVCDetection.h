@@ -1,7 +1,7 @@
-#ifndef OPENGEDK_COMPILER_H_INCLUDED
-#define OPENGEDK_COMPILER_H_INCLUDED
+#ifndef OPENGEDK_COMPILERMSVCDETECTION_H_INCLUDED
+#define OPENGEDK_COMPILERMSVCDETECTION_H_INCLUDED
 
-/* File: gedkCompiler.h
+/* File: gedk
  *
  * --------
  * License
@@ -54,31 +54,42 @@
  * Info
  * ------
  *
- * Purpose: compiler detection stuff.
+ * Purpose: msvc compiler detection macros.
  *
 */
 
+#define GEDK_VISUAL_STUDIO_6_x_0		        1200
+#define GEDK_VISUAL_STUDIO_NET_2002_7_x_0		1300
+#define GEDK_VISUAL_STUDIO_NET_2003_7_x_1		1310
+#define GEDK_VISUAL_STUDIO_2005_8_x_0			1400
+#define GEDK_VISUAL_STUDIO_2008_9_x_0			1500
+#define GEDK_VISUAL_STUDIO_2010_10_x_0			1600
+#define GEDK_VISUAL_STUDIO_2012_11_x_0			1700
+#define GEDK_VISUAL_STUDIO_2013_12_x_0			1800
+#define GEDK_VISUAL_STUDIO_2015_14_x_0			1900
+#define GEDK_VISUAL_STUDIO_2017 RTW_15_x_0		1910
+#define GEDK_VISUAL_STUDIO_2017_15_x_3			1911
+#define GEDK_VISUAL_STUDIO_2017_15_x_5			1912
+#define GEDK_VISUAL_STUDIO_2017_15_x_6			1913
+#define GEDK_VISUAL_STUDIO_2017_15_x_7			1914
+#define GEDK_VISUAL_STUDIO_2017_15_x_8			1915
+#define GEDK_VISUAL_STUDIO_2017_15_x_9			1916
+#define GEDK_VISUAL_STUDIO_2019 RTW_16_x_0		1920
+#define GEDK_VISUAL_STUDIO_2019_16_x_1			1921
+#define GEDK_VISUAL_STUDIO_2019_16_x_2			1922
+#define GEDK_VISUAL_STUDIO_2019_16_x_3			1923
+#define GEDK_VISUAL_STUDIO_2019_16_x_4			1924
+#define GEDK_VISUAL_STUDIO_2019_16_x_5			1925
+#define GEDK_VISUAL_STUDIO_2019_16_x_6			1926
+#define GEDK_VISUAL_STUDIO_2019_16_x_7			1927
+#define GEDK_VISUAL_STUDIO_2019_16_x_8_16_x_9	1928
+#define GEDK_VISUAL_STUDIO_2019_16_x_10_16_x_11	1929
+#define GEDK_VISUAL_STUDIO_2022 RTW_17_x_0		1930
 
-#include "gedkCompilerGCCDetection.h"
-#include "gedkCompilerMSVCDetection.h"
+/** Macro to get MSVC version.
+*/
+#define GEDK_MSVC_VERSION _MSC_VER
 
-#ifdef __GNUC__
-// Check gcc supported version used
-#   if !GEDK_GCC_VERSION_OR_HIGHER(8,1,0)
-#       error "Open GEDK requires GCC 8.1.0 or higher."
-#   endif
-#   define GEDK_GCC // This means that GCC compiler used.
-#   include "compilerGCC/gedkCompilerGCC.h"
-#elif defined(_MSC_VER)
-// Check msvc supported version used
-#   if !GEDK_MSVC_VERSION_OR_HIGHER(GEDK_VISUAL_STUDIO_2019_16_x_10_16_x_11)
-#       error "Open GEDK requires Visual Studio 2019 (16.10-16.11) or higher."
-#   endif
-#   define GEDK_MSVC // This means that MSVC compiler used.
-#else
-#   error "unsupported compiler used. Now {gcc8.1.0, Visual Studio 2019 (16.10-16.11)} only is supported."
-#endif // __GNUC__
+#define GEDK_MSVC_VERSION_OR_HIGHER(ver) (GEDK_MSVC_VERSION >= ver)
 
-#endif // OPENGEDK_COMPILER_H_INCLUDED
-
-
+#endif // OPENGEDK_COMPILERMSVCDETECTION_H_INCLUDED

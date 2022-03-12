@@ -69,7 +69,7 @@
 */
 #define GEDK_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
-/** Macro to check if gcc version is higher tan given one.
+/** Macro to check if gcc version is higher than given one.
     @code
 // Test for GCC >= 8.1.0
 #if GEDK_GCC_VERSION_OR_HIGHER(8,1,0)

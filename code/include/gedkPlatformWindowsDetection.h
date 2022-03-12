@@ -70,6 +70,16 @@
 #           endif // GEDK_PLATFORM64
 #       endif // _WIN64
 #   endif
+#elif defined(GEDK_MSVC)
+#   ifdef _WIN32
+#       define GEDK_OS_WINDOWS // This means OS Windows (32-bit or 64-bit) is used.
+#       ifdef _WIN64
+#           define GEDK_OS_WINDOWS64 // This is 64-bit Windows system.
+#           ifndef GEDK_PLATFORM64
+#               define GEDK_PLATFORM64
+#           endif // GEDK_PLATFORM64
+#       endif // _WIN64
+#   endif
 #endif
 
 #endif // OPENGEDK_PLATFORMWINDOWSDETECTION_H_INCLUDED
